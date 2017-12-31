@@ -223,6 +223,7 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
+  autoprefixer-rails
   bootstrap
   bootstrap-sass
   bson_ext

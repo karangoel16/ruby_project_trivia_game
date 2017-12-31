@@ -52,6 +52,8 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+gem 'autoprefixer-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
