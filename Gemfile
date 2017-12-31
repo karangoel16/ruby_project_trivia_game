@@ -54,6 +54,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'autoprefixer-rails'
 
+gem 'acts-as-taggable-on'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

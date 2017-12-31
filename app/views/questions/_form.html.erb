@@ -19,11 +19,15 @@
       </div>
       <div class="field">
       <%= f.label :correctAnswer %>
-      <%= f.text_field :correctAnswer ,class: 'form-input' %>
+        <%= f.text_field :correctAnswer ,class: 'form-input' %>
       </div>
       <div class="field">
-      <%= f.label :notCorrectAnswer %>
-      <%= f.text_field :notCorrectAnswer ,class: 'form-input' %>
+        <%= f.label :notCorrectAnswer %>
+        <%= f.text_field :notCorrectAnswer ,class: 'form-input' %>
+      </div>
+      <div class="field">
+        <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+        <%= f.text_field :tag_list %>
       </div>
       <%= f.text_field :user , value: current_user.uid, type: :hidden %>
       <div class="actions">
