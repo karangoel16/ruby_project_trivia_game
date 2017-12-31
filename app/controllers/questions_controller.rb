@@ -10,22 +10,30 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    
   end
 
   # GET /questions/new
   def new
+    Auth()
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    Auth()
   end
 
   # POST /questions
   # POST /questions.json
+  def Auth()
+    if session[:user_id]== nil
+      redirect_to root_url
+    end  
+  end
+
   def create
     @question = Question.new(question_params)
-
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -37,8 +45,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
