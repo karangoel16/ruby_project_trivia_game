@@ -4,25 +4,19 @@
 
 <div class="row">
   <div class="col-md-12">
-  <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.name %></td>
-        <td><%= button_to 'Show', question, class: 'btn btn-primary',method: :get %></td>
-        <td><%= link_to 'Edit', edit_question_path(question),class: 'btn btn-primary' %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></td>
-      </tr>
+  Name|Correct Answer|Total Answer
+  <ul class="list-group">
+      <% @questions.each do |question| %>
+      <li class="list-group-item">
+        <%= question.name %><t>|<t><%=question.correct%><t>|<t><%=question.total%>
+        <ul class="list-inline pull-right">
+          <li class="list-inline-item"><%= button_to 'Show', question, class: 'btn btn-primary',method: :get %></li>
+          <li class="list-inline-item"><%= link_to 'Edit', edit_question_path(question),class: 'btn btn-primary' %></li>
+          <li class="list-inline-item"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></li>
+        </ul>
+      </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
 
 <br>
     <div>
