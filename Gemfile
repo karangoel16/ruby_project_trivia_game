@@ -46,8 +46,6 @@ gem 'bootstrap'
 
 gem 'omniauth'
 
-gem 'omniauth-facebook'
-
 gem 'jquery-rails'
 
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -56,6 +54,9 @@ gem 'autoprefixer-rails'
 
 gem 'acts-as-taggable-on'
 
+gem 'bootstrap-social-rails'
+
+gem 'font-awesome-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,0 +1,18 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <p class="lead">
+    <center>
+        <ul class="list-group">
+            <%if session[:user_id]%>
+                <li><%= button_to "Sign out", signout_path, id: "sign_out", class: 'btn btn-danger' %></li>
+            <%else%>
+                <%= link_to "/auth/facebook", id: "sign_in" do%>
+                <div class="btn-lg btn-block btn-social btn-facebook"> 
+                        <i class="fa fa-facebook"></i> Sign in with Facebook
+                </div>
+                <% end %>
+            <%end%>
+        </ul>
+    </center></p>
+  </div>
+</div>

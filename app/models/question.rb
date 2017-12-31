@@ -7,4 +7,5 @@ class Question #< ApplicationRecord
     field :user, type: String
     field :correct, type: Integer, default: 0
     field :total, type: Integer, default: 0
+    
 end
