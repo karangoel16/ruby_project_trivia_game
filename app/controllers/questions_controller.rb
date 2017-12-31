@@ -5,13 +5,12 @@ class QuestionsController < ApplicationController
   # Added auth for the user to see all the questions
   def index
     Auth()
-    @questions = Question.all
+    @questions = Question.where(user: current_user.uid )
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
-    
   end
 
   # GET /questions/new
@@ -76,6 +75,8 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:name)
+      params.require(:question).permit([:name,:user])
     end
+
+      
 end

@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+<h3>Questions</h3>
 
-<table>
+<div class="row">
+  <div class="col-md-12">
+  <table>
   <thead>
     <tr>
       <th>Name</th>
@@ -14,14 +16,17 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.name %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Show', question, class: 'btn btn-primary',method: :get %></td>
+        <td><%= link_to 'Edit', edit_question_path(question),class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Question', new_question_path %>
+    <div>
+      <%= button_to 'New Question', new_question_path, class: 'btn btn-primary' %>
+    <div>
+  </div>
+</div>

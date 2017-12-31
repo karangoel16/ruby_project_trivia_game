@@ -5,7 +5,7 @@ class User #< ApplicationRecord
     field :name, type: String
     field :oauth_token, type: String
     field :oauth_expires_at, type:String
-    
+   
     def self.from_omniauth(auth)
         where(auth.slice(:provider, :uid)).first_or_initialize do |user|
           user.provider = auth.provider
