@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'quiz/quest'
+
   resources :questions
   get 'welcome/index'
   root to: 'welcome#index'
