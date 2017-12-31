@@ -3,15 +3,19 @@
     <p class="lead">
     <center>
         <ul class="list-group">
-            <%if session[:user_id]%>
-                <li><%= button_to "Sign out", signout_path, id: "sign_out", class: 'btn btn-danger' %></li>
-            <%else%>
-                <%= link_to "/auth/facebook", id: "sign_in" do%>
-                <div class="btn-lg btn-block btn-social btn-facebook"> 
+            <div class="col-md-offset-4 col-xs-4">
+                <%if session[:user_id]%>
+                    <li class="list-group-item"> <%= button_to 'Show Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
+                    <li class="list-group-item"> <%= button_to 'Take Quiz', quiz_quest_path, action: :quest,class: 'btn btn-primary',method: :get%>
+                    <li class="list-group-item"><%= button_to "Sign out", signout_path, id: "sign_out", class: 'btn btn-danger' %></li>
+                <%else%>
+                    <%= link_to "/auth/facebook", id: "sign_in" do%>
+                    <div class="btn-lg btn-block btn-social btn-facebook"> 
                         <i class="fa fa-facebook"></i> Sign in with Facebook
-                </div>
-                <% end %>
-            <%end%>
+                    </div>
+                    <% end %>
+                <%end%>
+            </div>
         </ul>
     </center></p>
   </div>
