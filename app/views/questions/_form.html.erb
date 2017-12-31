@@ -1,21 +1,35 @@
-<%= form_for(question) do |f| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-      <ul>
-      <% question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <div class="col-md-12">
+    <jumbotron>
+    <%= form_for(question) do |f| %>
+      <% if question.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+          <ul>
+          <% question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name ,class: 'form-input' %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name ,class: 'form-input' %>
+      </div>
+      <div class="field">
+      <%= f.label :correctAnswer %>
+      <%= f.text_field :correctAnswer ,class: 'form-input' %>
+      </div>
+      <div class="field">
+      <%= f.label :notCorrectAnswer %>
+      <%= f.text_field :notCorrectAnswer ,class: 'form-input' %>
+      </div>
+      <%= f.text_field :user , value: current_user.uid, type: :hidden %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+    </jumbotron>
   </div>
-  <%= f.text_field :user , value: current_user.uid, type: :hidden %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
