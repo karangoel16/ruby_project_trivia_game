@@ -22,6 +22,10 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     Auth()
+    set_question()
+    if @question.user != current_user.uid
+      redirect_to root_url
+    end
   end
 
   # POST /questions
