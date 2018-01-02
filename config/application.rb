@@ -11,7 +11,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 require "rails/test_unit/railtie"
-require 'dotenv'
+require 'dotenv/load' if (ENV['RUBY_ENV'] == "development" || ENV['RUBY_ENV'] == "test")
 if defined? Dotenv
   Dotenv.load
 end
