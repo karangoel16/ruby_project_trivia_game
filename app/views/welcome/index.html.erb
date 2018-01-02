@@ -8,6 +8,7 @@
                 <%if session[:user_id]%>
                     <li class="list-group-item"> <%= button_to 'Show Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
                     <li class="list-group-item"> <%= button_to 'Take Quiz', quiz_quest_path, action: :quest,class: 'btn btn-primary',method: :get%>
+                    <li class="list-group-item"><%= button_to 'High Score' , highscore_index_path, class: 'btn btn-primary', method: :get%>
                     <li class="list-group-item"><%= button_to "Sign out", signout_path, id: "sign_out", class: 'btn btn-danger' %></li>
                 <%else%>
                     <%= link_to "/auth/facebook", id: "sign_in" do%>

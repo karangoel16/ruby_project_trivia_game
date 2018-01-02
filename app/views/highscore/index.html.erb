@@ -1,0 +1,13 @@
+<ul class="list-group">
+<br>
+<div class="col-md-offset-5 col-md-2">
+    <% @users.each do |user|%>
+        <li class="list-group-item">
+            <ul class="list-inline">
+                <li class="list-inline-item"><%= image_tag(user.image, :alt => "rss feed") %></li>
+                <li class="list-inline-item"><strong></strong><%=user.name%></li>
+                <li class="list-inline-item"><%=user.score%></li>
+            </ul>
+        </li>
+    <%end%>
+</div>
