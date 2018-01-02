@@ -155,10 +155,15 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
+<% if ENV['MONGOLAB_URI'] %>
+  <% uri = URI.parse(ENV['MONGOLAB_URI']) %>
 production:
   clients:
     default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+      database: <%= uri.path.sub('/','') %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
       options:
-        skip_version_check: true
-        safe: true
+        user: <%= uri.user %>
+        password: <%= uri.password %>
+<% end %>
