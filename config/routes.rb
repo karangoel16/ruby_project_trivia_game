@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'quiz/quest'
-
+  post 'quiz/result'
   resources :questions
   get 'welcome/index'
   root to: 'welcome#index'

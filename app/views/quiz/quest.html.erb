@@ -1,16 +1,19 @@
 <ul class="list-group">
+<%= form_for @questions, url: {action: "result"},method: :post do |f| %>
     <% @questions.each do |question| %>
         <li class="list-group-item">
             <ul class="list-inline">
-                <li  class="list-inline-item"><%=question.name%></li>
-                    <% question[:answer].each_with_index do |result,index|%>
-                        <li  class="list-inline-item pull-right">
-                            <div class="form-check form-check-inline field">
-                                <%= radio_button_tag question,'#{result}' %><%=result%>
-                            </div>
-                        </li>
-                    <%end%>
+                    <li  class="list-inline-item"><%=question.name%></li>
+                        <% question[:answer].each_with_index do |result,index|%>
+                            <li  class="list-inline-item pull-right">
+                                <div class="form-check form-check-inline field">
+                                    <%= radio_button_tag 'id'+question.id,result %><%=result%>
+                                </div>
+                            </li>
+                        <%end%>
             </ul>
         </li>
     <%end%>
+    <%= f.submit 'Finish', class: "btn btn-lg btn-primary" %>
+<%end%>
 </ul>
