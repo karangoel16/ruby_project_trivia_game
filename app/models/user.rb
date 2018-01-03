@@ -6,6 +6,8 @@ class User #< ApplicationRecord
     field :oauth_token, type: String
     field :oauth_expires_at, type:String
     field :score, type: Integer, default: 0
+    field :streak_correct, type: Integer, default: 0
+    field :streak_incorrect, type: Integer, default: 0
     field :image, type: String
     def self.from_omniauth(auth)
         where(auth.slice(:provider, :uid)).first_or_initialize do |user|

@@ -17,6 +17,8 @@ class QuizController < ApplicationController
 
   def result
     correct=0
+    streak_max=0
+    streak_min=0
     params.keep_if {|k, v| k=~ /id/ }
     params.each{|id,val|
       id_temp=id.dup
@@ -26,8 +28,17 @@ class QuizController < ApplicationController
         correct=correct+1
         question.correct=question.correct+1
         question.update
+        streak_min=0
+        streak_max=streak_max +1
+        current_user.streak_correct = streak_max > current_user.streak_correct ?  streak_max :  current_user.streak_correct 
+      else
+        streak_max=0
+        streak_min=streak_min +1
+        current_user.streak_incorrect = streak_min > current_user.streak_incorrect ?  streak_min :  current_user.streak_incorrect 
       end
+      current_user.score = current_user.score> correct ? current_user.score : correct
     }
+    current_user.update
     respond_to do |format|
         format.html { redirect_to root_url, notice: 'You got '+correct.to_s+" out of 4 questions" }
     end
