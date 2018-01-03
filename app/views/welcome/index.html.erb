@@ -7,7 +7,13 @@
             <div class="col-md-offset-4 col-xs-4">
                 <%if session[:user_id]%>
                     <li class="list-group-item"> <%= button_to 'Show Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
-                    <li class="list-group-item"> <%= button_to 'Take Quiz', quiz_quest_path, action: :quest,class: 'btn btn-primary',method: :get%>
+                    <li class="list-group-item">
+                        <form class="form-inline" action="/quiz/quest" method="get">
+                            <label class="sr-only" for="inlineFormInputName2">Tags</label>
+                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="FooBar" name="tags">
+                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                        </form>
+                    </li>
                     <li class="list-group-item"><%= button_to 'High Score' , highscore_index_path, class: 'btn btn-primary', method: :get%>
                     <li class="list-group-item"><%= button_to "Sign out", signout_path, id: "sign_out", class: 'btn btn-danger' %></li>
                 <%else%>

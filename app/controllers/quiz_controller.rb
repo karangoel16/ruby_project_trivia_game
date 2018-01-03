@@ -1,11 +1,19 @@
+require 'pp'
+
 class QuizController < ApplicationController
   def index
   end
 
   def quest
     #we will get random questions here so that we can give it to the users later to show them
-    @questions = Question.all.shuffle[0..4]
-    @questions.each_with_index{|question,index|
+    val=params["tags"]
+    @questions=nil
+    @questions = Question.tagged_with_any(val)
+    if !@questions.exists?
+      redirect_to root_url, notice: "No question exist with this tag" 
+    else
+      @questions = @questions[0..4]
+      @questions.each_with_index{|question,index|
       question.total=question.total+1
       question.update 
       array= []
@@ -13,6 +21,7 @@ class QuizController < ApplicationController
       array.push(question.notCorrectAnswer)
       @questions[index][:answer]=array.shuffle
     }
+    end
   end
 
   def result

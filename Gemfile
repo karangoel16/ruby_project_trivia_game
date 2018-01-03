@@ -57,6 +57,8 @@ gem 'acts-as-taggable-on'
 gem 'bootstrap-social-rails'
 
 gem 'font-awesome-rails'
+
+gem 'mongoid_taggable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
