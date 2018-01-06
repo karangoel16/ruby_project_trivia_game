@@ -6,7 +6,7 @@
         <ul class="list-group">
             <div class="col-md-offset-1 col-xs-10">
                 <%if session[:user_id]%>
-                    <li class="list-group-item"> <%= button_to 'Show Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
+                    <li class="list-group-item"> <%= button_to 'Create Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
                     <li class="list-group-item">
                         <form class="form-inline" action="/quiz/quest" method="get">
                             <span style="display:inline-block">
@@ -34,3 +34,8 @@
     </center></p>
   </div>
 </div>
+Instructions: 
+<ul>
+    <li> You can create questions, where each question can be tagged with the context, so that it is easier for the user to find</li> 
+    <li> You can play a game with the specific tags in the question bank, and provide the number of questions needed in the questionnaire</li>
+    <li> Sign Out to move out of the application</li>
