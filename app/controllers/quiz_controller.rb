@@ -52,6 +52,7 @@ class QuizController < ApplicationController
       end
       current_user.score = current_user.score> score ? current_user.score : score
     }
+    current_user.total_score=current_user.total_score+current_user.score
     current_user.update
     respond_to do |format|
         format.html { redirect_to root_url, notice: 'You got '+correct.to_s+" out of 4 questions" +"."+"Your score is "+score.to_s}
