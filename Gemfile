@@ -62,7 +62,6 @@ gem 'mongoid_taggable'
 
 gem 'voteable_mongo'
 
-gem 'activerecord-reputation-system'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
