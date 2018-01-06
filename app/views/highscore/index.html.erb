@@ -6,13 +6,21 @@
     <h1>Average Game</h1>
     <strong>Total Score:-</strong><%=@total%><br>
     <strong>Total Games:-</strong><%=@games%><br>
-    <strong>Average Game Score:</strong><%=@total/@games%>
+    <strong>Average Game Score:</strong><%=@total/@games%><br>
+    <strong> Long Correct Streak </strong> <%= @long_streak%><br>
+    <strong> Long Incorrect Streak </strong> <%= @min_streak%><br>
     </div>
 </div>
 <ul class="list-group">
 <br>
 <div class="col-md-offset-5 col-md-5">
     <h1> Max Score </h1>
+    <ul class="list-inline">
+        <li class="list-inline-item">Profile</li>
+        <li class="list-inline-item">Name</li>
+        <li class="list-inline-item">Score</li>
+        <li class="list-inline-item">Average User Score</li>
+    </ul>
     <% @users.each do |user|%>
         <li class="list-group-item">
             <ul class="list-inline">
@@ -24,6 +32,12 @@
         </li>
     <%end%>
     <h1> Min Score</h1>
+    <ul class="list-inline">
+        <li class="list-inline-item">Profile</li>
+        <li class="list-inline-item">Name</li>
+        <li class="list-inline-item">Score</li>
+        <li class="list-inline-item">Average User Score</li>
+    </ul>
     <% @max_users.each do |user|%>
         <li class="list-group-item">
             <ul class="list-inline">

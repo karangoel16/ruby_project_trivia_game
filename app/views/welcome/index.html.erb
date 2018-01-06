@@ -4,13 +4,19 @@
     <p class="lead">
     <center>
         <ul class="list-group">
-            <div class="col-md-offset-4 col-xs-4">
+            <div class="col-md-offset-1 col-xs-10">
                 <%if session[:user_id]%>
                     <li class="list-group-item"> <%= button_to 'Show Question', questions_path, action: :index, class: 'btn btn-primary', method: :get %></li>
                     <li class="list-group-item">
                         <form class="form-inline" action="/quiz/quest" method="get">
-                            <label class="sr-only" for="inlineFormInputName2">Tags</label>
-                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="FooBar" name="tags">
+                            <span style="display:inline-block">
+                                <label class="display:block" for="inlineFormInputName2">Tags</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="FooBar" name="tags">
+                            </span>
+                            <span style="display:inline-block">
+                                <label class="display:block" for="inlineFormInputName3">No of Questions</label>
+                                <input type="number" class="form-control mb-2 mr-sm-2" id="inlineFormInputName3" placeholder="Questions" name="questions" value="4">
+                            </span>                                                        
                             <button type="submit" class="btn btn-primary mb-2">Submit</button>
                         </form>
                     </li>

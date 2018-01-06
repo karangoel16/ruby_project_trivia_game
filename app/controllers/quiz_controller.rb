@@ -7,6 +7,7 @@ class QuizController < ApplicationController
   def quest
     #we will get random questions here so that we can give it to the users later to show them
     val=params["tags"]
+    num = params["questions"]
     @questions=nil
     @questions = Question.tagged_with_any(val)
     if !@questions.exists?
@@ -14,7 +15,7 @@ class QuizController < ApplicationController
     else
       current_user.total_games+=1
       current_user.update
-      @questions = @questions[0..4]
+      @questions = @questions[0..num.to_i]
       @questions.each_with_index{|question,index|
       question.total=question.total+1
       question.update 
@@ -55,7 +56,7 @@ class QuizController < ApplicationController
     current_user.total_score=current_user.total_score+current_user.score
     current_user.update
     respond_to do |format|
-        format.html { redirect_to root_url, notice: 'You got '+correct.to_s+" out of 4 questions" +"."+"Your score is "+score.to_s}
+        format.html { redirect_to root_url, notice: "Your score is "+score.to_s}
     end
   end
 
