@@ -1,11 +1,17 @@
 <div class="jumbotron jumbotron-fluid">
+    <div class="container">
     <h1>Your Profile</h1>
     <%= image_tag(current_user.image, :alt => "rss feed") %><br>
     <strong>Score:<%=current_user.score%><br>
+    <h1>Average Game</h1>
+    <strong>Total Score:-</strong><%=@total%><br>
+    <strong>Total Games:-</strong><%=@games%><br>
+    <strong>Average Game Score:</strong><%=@total/@games%>
+    </div>
 </div>
 <ul class="list-group">
 <br>
-<div class="col-md-offset-5 col-md-2">
+<div class="col-md-offset-5 col-md-5">
     <h1> Max Score </h1>
     <% @users.each do |user|%>
         <li class="list-group-item">
@@ -13,6 +19,7 @@
                 <li class="list-inline-item"><%= image_tag(user.image, :alt => "rss feed") %></li>
                 <li class="list-inline-item"><strong></strong><%=user.name%></li>
                 <li class="list-inline-item"><%=user.score%></li>
+                <li class="list-inline-item"><%=user.total_score/user.total_games%></li>
             </ul>
         </li>
     <%end%>
@@ -21,8 +28,9 @@
         <li class="list-group-item">
             <ul class="list-inline">
                 <li class="list-inline-item"><%= image_tag(user.image, :alt => "rss feed") %></li>
-                <li class="list-inline-item"><strong></strong><%=user.name%></li>
+                <li class="list-inline-item"><strong><%=user.name%></strong></li>
                 <li class="list-inline-item"><%=user.score%></li>
+                <li class="list-inline-item"><%=user.total_score/user.total_games%></li>
             </ul>
         </li>
     <%end%>

@@ -12,6 +12,8 @@ class QuizController < ApplicationController
     if !@questions.exists?
       redirect_to root_url, notice: "No question exist with this tag" 
     else
+      current_user.total_games+=1
+      current_user.update
       @questions = @questions[0..4]
       @questions.each_with_index{|question,index|
       question.total=question.total+1
@@ -26,6 +28,7 @@ class QuizController < ApplicationController
 
   def result
     correct=0
+    score=0
     streak_max=0
     streak_min=0
     params.keep_if {|k, v| k=~ /id/ }
@@ -35,21 +38,23 @@ class QuizController < ApplicationController
       question=Question.find(id_temp)
       if (question and question.correctAnswer.eql? val)
         correct=correct+1
+        score=score+4
         question.correct=question.correct+1
         question.update
         streak_min=0
         streak_max=streak_max +1
         current_user.streak_correct = streak_max > current_user.streak_correct ?  streak_max :  current_user.streak_correct 
       else
+        score=score-1
         streak_max=0
         streak_min=streak_min +1
         current_user.streak_incorrect = streak_min > current_user.streak_incorrect ?  streak_min :  current_user.streak_incorrect 
       end
-      current_user.score = current_user.score> correct ? current_user.score : correct
+      current_user.score = current_user.score> score ? current_user.score : score
     }
     current_user.update
     respond_to do |format|
-        format.html { redirect_to root_url, notice: 'You got '+correct.to_s+" out of 4 questions" }
+        format.html { redirect_to root_url, notice: 'You got '+correct.to_s+" out of 4 questions" +"."+"Your score is "+score.to_s}
     end
   end
 

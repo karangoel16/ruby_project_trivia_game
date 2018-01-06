@@ -1,5 +1,7 @@
 class User #< ApplicationRecord
     include Mongoid::Document
+    include Mongo::Voter
+    
     field :provider, type: String
     field :uid, type: String
     field :name, type: String
@@ -9,6 +11,9 @@ class User #< ApplicationRecord
     field :streak_correct, type: Integer, default: 0
     field :streak_incorrect, type: Integer, default: 0
     field :image, type: String
+    field :total_score, type: Integer, default: 0
+    field :total_games, type: Integer, default: 1
+
     def self.from_omniauth(auth)
         where(auth.slice(:provider, :uid)).first_or_initialize do |user|
           user.provider = auth.provider
